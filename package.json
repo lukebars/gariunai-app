@@ -6,7 +6,8 @@
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "xcode": "open ios/PorscheClubLithuania.xcworkspace"
   },
   "dependencies": {
     "@types/react": "~18.2.45",
@@ -19,7 +20,9 @@
     "react-native-webview": "13.6.4",
     "styled-components": "^6.1.8",
     "typescript": "^5.3.0",
-    "whatwg-url-without-unicode": "^8.0.0-3"
+    "whatwg-url-without-unicode": "^8.0.0-3",
+    "expo-splash-screen": "~0.26.4",
+    "expo-camera": "~14.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
