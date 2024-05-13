@@ -14,6 +14,7 @@ function isLoginPage(url: string) {
 }
 
 export const MainScreen = () => {
+  const [autoIncrementingNumber, setAutoIncrementingNumber] = useState(0);
   const [isInitialLoad, setInitialLoad] = useState(true);
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -41,6 +42,7 @@ export const MainScreen = () => {
     >
       <FetchLoader showing={loading} />
       <StyledWebView
+        key={autoIncrementingNumber}
         onLoadEnd={hideLoader}
         onLoadStart={showLoader}
         onNavigationStateChange={(e) => setUrl(e.url)}
@@ -61,6 +63,13 @@ export const MainScreen = () => {
         setBuiltInZoomControls={false}
         startInLoadingState={true}
         thirdPartyCookiesEnabled={true}
+        // prevent blank screen
+        onRenderProcessGone={() => {
+          setAutoIncrementingNumber((prev) => prev + 1);
+        }}
+        onContentProcessDidTerminate={() =>
+          setAutoIncrementingNumber((prev) => prev + 1)
+        }
       />
     </SafeAreaView>
   );
