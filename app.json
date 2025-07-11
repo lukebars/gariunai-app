@@ -14,8 +14,9 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "org.reactjs.native.PorscheClubLithuania"
+      "buildNumber": "2000008",
+      "bundleIdentifier": "org.reactjs.native.PorscheClubLithuania",
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
@@ -26,7 +27,8 @@
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
       ],
-      "package": "com.porscheclublithuania.app"
+      "package": "com.porscheclublithuania.app",
+      "versionCode": 2000008
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -40,6 +42,12 @@
           "recordAudioAndroid": true
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "4212041e-f741-419c-9038-b8f3d2df82a3"
+      }
+    },
+    "owner": "porscheklubas"
   }
 }
