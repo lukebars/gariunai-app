@@ -2,7 +2,7 @@
   "expo": {
     "name": "Gariūnai",
     "slug": "gariunai-app",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "newArchEnabled": false,
@@ -14,7 +14,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "buildNumber": "1000000",
+      "buildNumber": "1000001",
       "bundleIdentifier": "com.gariunai.app",
       "supportsTablet": true,
       "infoPlist": {
@@ -32,7 +32,7 @@
         "android.permission.RECORD_AUDIO"
       ],
       "package": "com.gariunai.app",
-      "versionCode": 1000000
+      "versionCode": 1000001
     },
     "web": {
       "favicon": "./assets/favicon.png"
