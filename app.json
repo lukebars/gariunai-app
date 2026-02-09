@@ -16,7 +16,11 @@
     "ios": {
       "buildNumber": "1000000",
       "bundleIdentifier": "com.gariunai.app",
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "LSApplicationQueriesSchemes": ["tel", "mailto", "sms"]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -45,9 +49,9 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "4212041e-f741-419c-9038-b8f3d2df82a3"
+        "projectId": "8e37e63d-6dc9-4ed0-8574-ee7af3837b3c"
       }
     },
-    "owner": "gariunai"
+    "owner": "babyleapapp"
   }
 }
