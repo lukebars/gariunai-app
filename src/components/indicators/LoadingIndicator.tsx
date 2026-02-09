@@ -1,67 +1,102 @@
 import type { FC } from "react";
 import React, { memo, useEffect } from "react";
+import { Dimensions } from "react-native";
 import styled from "styled-components/native";
 import Animated, {
   Easing,
-  Extrapolation,
   interpolate,
   useAnimatedStyle,
   useSharedValue,
   withRepeat,
   withTiming,
 } from "react-native-reanimated";
-import { Dimensions } from "react-native";
 
-const WIDTH = Dimensions.get("screen").width;
+const SCREEN_WIDTH = Dimensions.get("window").width;
 
 interface FetchLoaderProps {
   showing?: boolean;
+  height?: number;
 }
 
-export const FetchLoader: FC<FetchLoaderProps> = memo(({ showing }) => {
-  const anim = useSharedValue(-1);
+export const FetchLoader: FC<FetchLoaderProps> = memo(
+  ({ showing, height = 4 }) => {
+    const shimmer = useSharedValue(0);
+    const visibility = useSharedValue(0);
 
-  useEffect(() => {
-    anim.value = withRepeat(
-      withTiming(1, { duration: 2000, easing: Easing.ease }),
-      -1,
-      true,
+    useEffect(() => {
+      shimmer.value = withRepeat(
+        withTiming(1, { duration: 2000, easing: Easing.inOut(Easing.ease) }),
+        -1,
+        false,
+      );
+    }, []);
+
+    useEffect(() => {
+      visibility.value = withTiming(showing ? 1 : 0, {
+        duration: 300,
+        easing: Easing.out(Easing.ease),
+      });
+    }, [showing]);
+
+    const backgroundStyle = useAnimatedStyle(
+      () => ({
+        opacity: visibility.value,
+        transform: [
+          {
+            translateY: interpolate(visibility.value, [0, 1], [-height / 2, 0]),
+          },
+        ],
+      }),
+      [height],
     );
-  }, []);
 
-  const loaderStyle = useAnimatedStyle(
-    () => ({
-      //@ts-ignore
-      transform: [
-        {
-          scaleX: interpolate(
-            anim.value,
-            [-1, 0, 1],
-            [0, 2, 0],
-            Extrapolation.CLAMP,
-          ),
-        },
-      ],
-    }),
-    [],
-  );
-  if (showing) return <Loader style={[loaderStyle]} />;
+    const shimmerStyle = useAnimatedStyle(
+      () => ({
+        transform: [
+          {
+            translateX: interpolate(
+              shimmer.value,
+              [0, 1],
+              [-SCREEN_WIDTH, SCREEN_WIDTH],
+            ),
+          },
+        ],
+        opacity: interpolate(
+          shimmer.value,
+          [0, 0.2, 0.5, 0.8, 1],
+          [0, 0.5, 0.7, 0.5, 0],
+        ),
+      }),
+      [],
+    );
 
-  return <PlaceHolder />;
-});
+    return (
+      <LoaderBackground height={height} style={backgroundStyle}>
+        <ShimmerBar style={shimmerStyle} />
+      </LoaderBackground>
+    );
+  },
+);
 
 FetchLoader.displayName = "FetchLoader";
 
-FetchLoader.defaultProps = {
-  showing: true,
-};
-
-const Loader = styled(Animated.View)`
-  width: ${global.width}px;
-  height: 4px;
-  background-color: ${({ theme }) => theme.colors.primary};
+const LoaderBackground = styled(Animated.View)<{ height: number }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: ${({ height }) => height}px;
+  background-color: #1e8a35;
+  overflow: hidden;
+  pointer-events: none;
 `;
 
-const PlaceHolder = styled.View`
-  height: 4px;
+const ShimmerBar = styled(Animated.View)`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
 `;

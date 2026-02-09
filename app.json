@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Porsche Club Lithuania",
-    "slug": "porsche-club-app",
-    "version": "2.0.8",
+    "name": "Gariūnai",
+    "slug": "gariunai-app",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "newArchEnabled": false,
@@ -14,8 +14,8 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "buildNumber": "2000008",
-      "bundleIdentifier": "org.reactjs.native.PorscheClubLithuania",
+      "buildNumber": "1000000",
+      "bundleIdentifier": "com.gariunai.app",
       "supportsTablet": true
     },
     "android": {
@@ -27,8 +27,8 @@
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
       ],
-      "package": "com.porscheclublithuania.app",
-      "versionCode": 2000008
+      "package": "com.gariunai.app",
+      "versionCode": 1000000
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -48,6 +48,6 @@
         "projectId": "4212041e-f741-419c-9038-b8f3d2df82a3"
       }
     },
-    "owner": "porscheklubas"
+    "owner": "gariunai"
   }
 }

@@ -4,6 +4,6 @@ import type { DefaultTheme } from "styled-components/native";
 export const lightTheme: DefaultTheme = {
   type: "light",
   colors: {
-    primary: "#D5100C",
+    primary: "#1E8A35",
   },
 };
