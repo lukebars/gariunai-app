@@ -6,10 +6,6 @@ import { styled } from "styled-components/native";
 import * as SplashScreen from "expo-splash-screen";
 import { BackHandler, Platform } from "react-native";
 
-const INJECTED_JAVASCRIPT = `(function() {
-  const meta = document.createElement('meta'); meta.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1'); meta.setAttribute('name', 'viewport'); document.getElementsByTagName('head')[0].appendChild(meta);
-})();`;
-
 export const MainScreen = () => {
   const edges = useSafeAreaInsets();
 
@@ -19,6 +15,10 @@ export const MainScreen = () => {
   const [isInitialLoad, setInitialLoad] = useState(true);
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const INJECTED_JAVASCRIPT = `(function() {
+  const meta = document.createElement('meta'); meta.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1'); meta.setAttribute('name', 'viewport'); document.getElementsByTagName('head')[0].appendChild(meta);
+})();`;
 
   function showLoader() {
     setLoading(true);
@@ -66,6 +66,15 @@ export const MainScreen = () => {
         contentInsetAdjustmentBehavior="scrollableAxes"
         onLoadEnd={hideLoader}
         onLoadStart={showLoader}
+        containerStyle={
+          Platform.OS === "android"
+            ? {
+                paddingTop: edges.top,
+                paddingBottom: edges.bottom,
+                backgroundColor: "#1e8a35",
+              }
+            : undefined
+        }
         onNavigationStateChange={(e) => setUrl(e.url)}
         allowsFullscreenVideo={false}
         allowsInlineMediaPlayback={true}
