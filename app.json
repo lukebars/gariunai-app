@@ -16,7 +16,7 @@
     "ios": {
       "buildNumber": "1000002",
       "bundleIdentifier": "com.gariunai.app",
-      "supportsTablet": true,
+      "supportsTablet": false,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
         "LSApplicationQueriesSchemes": ["tel", "mailto", "sms"]
@@ -30,7 +30,8 @@
       },
       "permissions": [
         "android.permission.CAMERA",
-        "android.permission.RECORD_AUDIO"
+        "android.permission.RECORD_AUDIO",
+        "CALL_PHONE"
       ],
       "package": "com.gariunai.app",
       "versionCode": 1000002
