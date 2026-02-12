@@ -1,6 +1,6 @@
 {
   "name": "gariunai-app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -21,7 +21,10 @@
     "typescript": "~5.8.3",
     "whatwg-url-without-unicode": "^8.0.0-3",
     "expo-splash-screen": "~0.30.10",
-    "expo-camera": "~16.1.10"
+    "expo-camera": "~16.1.10",
+    "expo-notifications": "~0.31.5",
+    "expo-device": "~7.1.4",
+    "expo-constants": "~17.1.8"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Gariūnai",
     "slug": "gariunai-app",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "newArchEnabled": false,
@@ -14,7 +14,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "buildNumber": "1000002",
+      "buildNumber": "1000003",
       "bundleIdentifier": "com.gariunai.app",
       "supportsTablet": false,
       "infoPlist": {
@@ -34,12 +34,13 @@
         "CALL_PHONE"
       ],
       "package": "com.gariunai.app",
-      "versionCode": 1000002
+      "versionCode": 1000003
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
+      "expo-notifications",
       [
         "expo-camera",
         {
